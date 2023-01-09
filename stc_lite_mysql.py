@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 import mysql.connector
-from sanitrend_logging import SaniTrendLogging
+from stc_logging import SaniTrendLogging
 
 mysql_log = SaniTrendLogging('mysql_errors')
 
