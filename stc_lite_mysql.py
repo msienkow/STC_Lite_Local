@@ -278,6 +278,16 @@ def create_mysql_user(
         return 1
 
 
+def add_mysql_data(
+    host: str, 
+    user: str, 
+    password: str,
+    database: str,
+    table: str, 
+    
+) -> int:
+
+
 @dataclass
 class MySqlGrafanaDB:
     mysql_host: str = ''
