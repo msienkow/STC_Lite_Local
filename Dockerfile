@@ -3,18 +3,12 @@ FROM python:3-alpine
 
 WORKDIR /stc
 
-# ADD stc_lite.py .
+RUN apk add --update git
 
-# ADD stc_logging.py .
+RUN git clone https://github.com/msienkow/STC_Lite_Local.git
 
-# ADD stc_lite_mysql.py .
+RUN cd STC_Lite_Local
 
-# ADD requirements.txt .
-
-ADD endless.py .
-
-RUN pip install -r requirements.txt
-
-
+RUN pip3 install -r requirements.txt
 
 CMD [ "python", "./endless.py" ] 
