@@ -8,4 +8,4 @@ sudo docker run -p 80:3000 --name grafana -d --restart always -v grafana:/var/li
 
 
 # docker build for logic
-# sudo docker build --network=host stc .
+# sudo docker build --network=host stc .sudo d
