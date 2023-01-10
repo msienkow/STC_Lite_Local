@@ -1,6 +1,6 @@
 # Copyright 2023 Sani-Matic Inc. (sanimatic.com)
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import mysql.connector
 from stc_logging import SaniTrendLogging
 
@@ -278,15 +278,15 @@ def create_mysql_user(
         return 1
 
 
-def add_mysql_data(
+def add_mysql_stc_lite_data(
     host: str, 
     user: str, 
     password: str,
     database: str,
     table: str, 
-    
-) -> int:
 
+) -> int:
+    pass
 
 @dataclass
 class MySqlGrafanaDB:
@@ -294,10 +294,10 @@ class MySqlGrafanaDB:
     mysql_user: str = ''
     mysql_password: str = ''
     mysql_db_name: str = 'sanitrend'
-    mysql_db_exists: bool = False
-    mysql_table_exists: bool = False
     mysql_grafana_user: str = 'grafana'
-    mysql_grafana_user_exists: bool = False
+    mysql_db_exists: bool = field(init=False)
+    mysql_table_exists: bool = field(init=False)
+    mysql_grafana_user_exists: bool = field(init=False)
     
     def __post_init__(self):
         try:
@@ -374,12 +374,14 @@ class MySqlGrafanaDB:
         except Exception as e:
             mysql_log.logger.error(repr(e))
 
-            
-
+@dataclass
+class Test(MySqlGrafanaDB):
+    pass
 
 def main():
     pass
-    db = MySqlGrafanaDB('10.10.135.200', 'root', 'root')
+    db = Test('10.10.135.200', 'root', 'root','sanitrend','grafana')
+    print(db.mysql_db_exists)
 
 if __name__ == '__main__':
     main()
