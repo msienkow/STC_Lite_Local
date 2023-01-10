@@ -374,14 +374,12 @@ class MySqlGrafanaDB:
         except Exception as e:
             mysql_log.logger.error(repr(e))
 
-@dataclass
-class Test(MySqlGrafanaDB):
-    pass
+# @dataclass
+# class Test(MySqlGrafanaDB):
+#     pass
 
 def main():
     pass
-    db = Test('10.10.135.200', 'root', 'root','sanitrend','grafana')
-    print(db.mysql_db_exists)
-
+   
 if __name__ == '__main__':
     main()
