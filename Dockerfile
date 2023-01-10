@@ -1,16 +1,20 @@
 # Dockerfile, Image, Container
-FROM python:3.11
+FROM python:3-alpine
 
 WORKDIR /stc
 
-ADD stc_lite.py .
+# ADD stc_lite.py .
 
-ADD stc_logging.py .
+# ADD stc_logging.py .
 
-ADD stc_lite_mysql.py .
+# ADD stc_lite_mysql.py .
 
-ADD requirements.txt .
+# ADD requirements.txt .
+
+ADD endless.py .
 
 RUN pip install -r requirements.txt
 
-CMD [ "python", "./stc_lite_mysql.py" ] 
+
+
+CMD [ "python", "./endless.py" ] 
